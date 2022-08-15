@@ -7,10 +7,34 @@ body{
     display: inline-flex;
     width: 100vw;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+.head-container{
+    width: 100%;
+    height:fit-content;
+    display: inline-flex;
+    justify-content: center;
+    margin: 2em;
+}
+
+p{
+    margin-bottom: 0;
+}
+
+.simple-container{
+    width: 60%;
+    height: fit-content;
+    background-color: rgb(250, 186, 112);
+    border-radius: 20px;
+    padding:1em;
+    box-shadow: 5px 5px 10px 5px rgb(180, 128, 94) inset;
+    text-align: center;
 }
 
 .simple-container-left{
-    margin-top:3em;
     width: 30%;
     height: fit-content;
     background-color: rgb(250, 186, 112);
@@ -22,7 +46,6 @@ body{
 }
 
 .simple-container-right{
-    margin-top:3em;
     width: 60%;
     height: fit-content;
     background-color: rgb(250, 186, 112);

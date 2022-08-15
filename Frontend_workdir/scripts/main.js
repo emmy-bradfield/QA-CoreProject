@@ -14,6 +14,9 @@ let updateBtn = document.querySelector("#updateBtn");
 let deleteID = document.querySelector("#deleteID");
 let deleteBtn = document.querySelector("#deleteBtn");
 
+let detailsBtn = document.querySelector("#detailsBtn");
+let detailsDiv = document.querySelector("#detailsDiv")
+
 let printResults = (result) => {
     let subView = document.createElement("div");
     let subView2 = document.createElement("div");
@@ -70,6 +73,10 @@ let remove = () => {
     .then (res => {
         viewAll()
     }).catch(err => { console.log(err); });
+}
+
+let details = () => {
+    
 }
 
 
