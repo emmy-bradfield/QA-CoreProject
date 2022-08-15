@@ -38,6 +38,11 @@ public class GuestController {
 		return this.service.viewAll();
 	}
 	
+	@GetMapping("view")
+	public Guest view(@PathParam("id") Long id) {
+		return service.view(id);
+	}
+	
 	@PutMapping("/update")
 	public Guest update(@PathParam("id") Long id, @RequestBody Guest guest) {
 		return service.update(id, guest);
