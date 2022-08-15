@@ -31,7 +31,12 @@ public class GuestService {
 		Guest guest = guestOp.get();
 		return guest;
 	}
-
+	
+	public Guest viewEmail(String email) {
+		Optional<Guest> guestOp = this.repo.findByEmail(email);
+		Guest guest = guestOp.get();
+		return guest;
+	}
 
 	public Guest update(Long id, Guest newGuest) {
 		Optional<Guest> guestOp = this.repo.findById(id);

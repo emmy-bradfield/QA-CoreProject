@@ -76,6 +76,19 @@ public class GuestControllerUnitTest {
 	}
 	
 	@Test
+	public void viewEmailTest() throws Exception {
+		Guest guest = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, false,
+				false);
+		String guestJSON = mapper.writeValueAsString(guest);
+		
+		Mockito.when(service.viewEmail("emily-bradfield@outlook.com")).thenReturn(guest);
+		
+		mvc.perform(get("/viewEmail?email=emily-bradfield@outlook.com")
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(content().json(guestJSON));
+	}
+	
+	@Test
 	public void updateTest() throws Exception {
 		Long id = 1L;
 		Guest update = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root2", true, true, false, false);
