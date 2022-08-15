@@ -43,6 +43,7 @@ public class GuestServiceUnitTest {
 		assertEquals(result, service.viewAll());
 	}
 	
+	@Test
 	public void view() {
 		Guest guest = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, false, false);
 		Optional<Guest> guestOp = Optional.ofNullable(guest);
