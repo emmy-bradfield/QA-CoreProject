@@ -24,6 +24,12 @@ public class GuestService {
 
 	public List<Guest> viewAll() {
 		return this.repo.findAll();
+	} 
+	
+	public Guest view(Long id) {
+		Optional<Guest> guestOp = this.repo.findById(id);
+		Guest guest = guestOp.get();
+		return guest;
 	}
 
 
