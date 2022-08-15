@@ -62,7 +62,16 @@ public class GuestControllerIntegrationTest {
 		mvc.perform(get("/viewAll")
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(content().json(resultJSON));
+	}
+	
+	@Test
+	public void view() throws Exception {
+		Guest guest = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, false, false);
+		String guestJSON = mapper.writeValueAsString(guest);
 		
+		mvc.perform(get("/view?id=1")
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(content().json(guestJSON));
 	}
 	
 	@Test
