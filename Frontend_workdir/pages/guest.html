@@ -47,17 +47,17 @@
         </div>
 
         <div class="card">
-            <div>
+            <div id="rsvpDiv">
                 <div class="button-row">
                     <h6>RSVP</h6>
-                    <button id="settings" class="icon-btn fa-solid fa-pen" data-bs-toggle="tooltip"
+                    <button id="rsvp" class="icon-btn fa-solid fa-pen" data-bs-toggle="tooltip"
                         data-bs-title="Edit Response" data-bs-placement="bottom"></button>
                 </div>
                 <hr>
                 <ul>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                            <input class="form-check-input" type="checkbox" value="" id="attend" disabled>
                             <label class="form-check-label" for="flexCheckDefault">
                                 I will be attending the event
                             </label>
@@ -65,7 +65,7 @@
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                            <input class="form-check-input" type="checkbox" value="" id="stay" disabled>
                             <label class="form-check-label" for="flexCheckDefault">
                                 I will need somewhere to stay
                             </label>
@@ -73,7 +73,7 @@
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                            <input class="form-check-input" type="checkbox" value="" id="park" disabled>
                             <label class="form-check-label" for="flexCheckDefault">
                                 I will need somewhere to park
                             </label>
@@ -81,10 +81,11 @@
                     </li>
                 </ul>
             </div>
+            <button id="saveRSVP" class="icon-btn fa-solid fa-circle-check invisible no-space"></button>
         </div>
         <br>
         <div class="card">
-            <div>
+            <div id="settingsDiv">
                 <div class="button-row">
                     <h6>My details</h6>
                     <button id="editUser" class="icon-btn fa-solid fa-gear" data-bs-toggle="tooltip"
@@ -95,32 +96,20 @@
                 <ul>
                     <li>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Full name"
-                                disabled>
+                            <input id="guestName" type="text" class="form-control" id="formGroupExampleInput" disabled>
                         </div>
                     </li>
                     <li>
                         <div class="mb-3">
-                            <input type="text" class="form-control" id="formGroupExampleInput"
-                                placeholder="Email address" disabled>
+                            <input id="guestEmail" type="text" class="form-control" id="formGroupExampleInput" disabled>
                         </div>
                     </li>
-                    <h6 class="smaller"> Change password </h6>
-                    <form class="row gy-2 gx-3 align-items-center">
-                        <div class="col-auto">
-                            <input type="password" class="form-control" id="oldPass"
-                                placeholder="Current Password" disabled>
-                        </div>
-
                         <div class="col-auto">
                             <input type="password" class="form-control" id="newPass" placeholder="New Password" disabled>
                         </div>
-
-                        <div class="col-auto">
-                            <input type="password" class="form-control" id="newPassTwo" placeholder="Repeat Password" disabled>
-                        </div>
-                    </form>
                 </ul>
+
+                <button id="saveUser" class="icon-btn fa-solid fa-circle-check invisible no-space"></button>
 
             </div>
         </div>

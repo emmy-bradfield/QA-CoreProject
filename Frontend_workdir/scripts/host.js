@@ -180,10 +180,6 @@ let remove = () => {
     }).catch(err => { console.log(err); });
 }
 
-let details = () => {
-    
-}
-
 let openEditor = () =>{
     editBtn.setAttribute("class", "invisible");
     saveBtn.setAttribute("class", "btn btn-light right-btn-2 visible");

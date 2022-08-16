@@ -23,8 +23,11 @@ let validate = () => {
 
         } else {
             let hiddenID = result.id;
+            localStorage.setItem("userID", hiddenID);
+            let password = result.password;
+            localStorage.setItem("password", password)
             let host = result.host;
-            login(host, hiddenID);
+            login(host);
         }
     }).catch(err => {
         errorDiv.innerHTML="";
@@ -35,11 +38,10 @@ let validate = () => {
         console.log(err)});
 }
 
-let login = (host, hiddenID) => {
+let login = (host) => {
     if (host == true) {
         window.location.replace("./pages/host.html");
     } else {
-        localStorage.setItem("userID", hiddenID);
         window.location.replace("./pages/guest.html");
     }
 }
