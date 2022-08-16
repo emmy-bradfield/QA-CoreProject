@@ -14,43 +14,33 @@
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- Our CSS -->
-    <link href="./styles/main.css" rel="stylesheet">
-    <link href="./login.css" rel="stylesheet">
+    <link href="../styles/main.css" rel="stylesheet">
+    <link href="../styles/guest.css" rel="stylesheet">
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/98754461a4.js" crossorigin="anonymous"></script>
 
     <!-- =============================================================================================================== -->
 
-    <title>Party Planner | Login </title>
+    <title>Party Planner </title>
 
 </head>
 
-<body>
+<body onload="shareDetails()">
 
-    <div id="login" class="container">
-        <form id="login" action="login" class="login-form">
-            <h4> Login to PartyPlanner </h4>
-            <br>
-            <div id="error-space"></div>
-            <div id="form-space">
+    <div class="container head-container">
+        <div id="partyDetails" class="simple-container">
+            <div id="detailsDiv">
+                <h4 id="openEditor" class="btn-title"> Welcome to the party!</h4>
                 <div class="mb-3">
-                    <label for="formGroupExampleInput" class="form-label">Email Address</label>
-                    <input id="email" type="email" class="form-control" autocomplete="email webauth">
+                    <textarea class="form-control" id="detailsOut" rows="3"
+                        placeholder="Press edit to start writing your party details" disabled></textarea>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="formGroupExampleInput2" class="form-label">Password</label>
-                    <input id="password" type="password" class="form-control" autocomplete="current-password webauth">
-                </div>
-                <button id="loginBtn" type="button" class="btn btn-dark">Login</button>
-                &nbsp;
-                <button id="makeEmily" type="button" class="btn btn-dark">Make Emily</button>
-                &nbsp;
-                <button id="sadBtn" type="button" class="btn btn-dark">Delete Emily</button>
+                
             </div>
+        </div>
     </div>
-    </form>
-
 
 
 
@@ -68,8 +58,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Custome Main JavaScript -->
-    <script src="./scripts/main.js"></script>
-    <script src="./login.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/guest.js"></script>
 
     <!-- =============================================================================================================== -->
 </body>

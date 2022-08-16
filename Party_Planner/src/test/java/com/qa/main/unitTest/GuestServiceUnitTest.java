@@ -52,6 +52,14 @@ public class GuestServiceUnitTest {
 	}
 	
 	@Test
+	public void viewEmail() {
+		Guest guest = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, false, false);
+		Optional<Guest> guestOp = Optional.ofNullable(guest);
+		
+		Mockito.when(repo.findByEmail("emily-bradfield@outlook.com")).thenReturn(guestOp);
+	}
+	
+	@Test
 	public void update() {
 		Long id = 1L;
 		Guest update = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root2", true, true, false, false);		
