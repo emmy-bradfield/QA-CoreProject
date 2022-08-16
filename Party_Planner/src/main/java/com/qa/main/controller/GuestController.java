@@ -38,9 +38,14 @@ public class GuestController {
 		return this.service.viewAll();
 	}
 	
-	@GetMapping("view")
+	@GetMapping("/view")
 	public Guest view(@PathParam("id") Long id) {
 		return service.view(id);
+	}
+	
+	@GetMapping("/viewEmail")
+	public Guest viewEmail(@PathParam("email") String email) {
+		return service.viewEmail(email);
 	}
 	
 	@PutMapping("/update")

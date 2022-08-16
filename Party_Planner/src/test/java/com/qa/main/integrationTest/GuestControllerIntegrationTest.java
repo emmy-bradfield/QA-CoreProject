@@ -75,6 +75,16 @@ public class GuestControllerIntegrationTest {
 	}
 	
 	@Test
+	public void viewEmail() throws Exception {
+		Guest guest = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, false, false);
+		String guestJSON = mapper.writeValueAsString(guest);
+		
+		mvc.perform(get("/viewEmail?email=emily-bradfield@outlook.com")
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(content().json(guestJSON));
+	}
+	
+	@Test
 	public void updateTest() throws Exception {
 		Guest update = new Guest(1L, true, "Emmy Bradfield", "emily-bradfield@outlook.com", "root", true, true, false, false);
 		String updateJSON = mapper.writeValueAsString(update);
