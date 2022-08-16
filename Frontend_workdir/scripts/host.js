@@ -17,7 +17,13 @@ let viewBtn = document.querySelector("#viewBtn");
 let deleteID = document.querySelector("#deleteID");
 let deleteBtn = document.querySelector("#deleteBtn");
 
+let detailsBtn = document.querySelector("#detailsBtn");
+let detailsDiv = document.querySelector("#detailsDiv");
 
+let editBtn = document.querySelector("#editDetails");
+let saveBtn = document.querySelector("#saveDetails");
+let cancelBtn = document.querySelector("#discard");
+let detailsIn = document.querySelector("#detailsIn");
 
 let printResults = (result) => {
     let subView = document.createElement("div");
@@ -159,7 +165,7 @@ let update = () => {
         "name": updateName.value,
         "email": updateEmail.value
     }
-
+    
     axios.put(`http://localhost:8080/update?id=${id}`, guest)
     .then(res => {
         viewAll();
@@ -174,9 +180,52 @@ let remove = () => {
     }).catch(err => { console.log(err); });
 }
 
+let details = () => {
+    
+}
+
+let openEditor = () =>{
+    editBtn.setAttribute("class", "invisible");
+    saveBtn.setAttribute("class", "btn btn-light right-btn-2 visible");
+    cancelBtn.setAttribute("class", "btn btn-light right-btn-2 visible");
+    detailsIn.disabled = false;
+    detailsIn.textContent = localStorage['details'];
+}
+
+let saveEditor = () =>{
+    localStorage.removeItem('details');
+    let partyDetails = detailsIn.value;
+    localStorage.setItem("details", partyDetails);
+    editBtn.setAttribute("class", "btn btn-light right-btn-2");
+    saveBtn.setAttribute("class", "invisible");
+    cancelBtn.setAttribute("class", "invisible");
+    detailsIn.placeholder = partyDetails;
+    detailsIn.disabled = true;
+}
+
+let cancelEditor = () => {
+    detailsIn.value = "";
+    editBtn.setAttribute("class", "btn btn-light right-btn-2");
+    saveBtn.setAttribute("class", "invisible");
+    cancelBtn.setAttribute("class", "invisible");
+    detailsIn.disabled = true;
+}
+
+let startScript = () =>{
+    viewAll();
+    if (localStorage['details'] != null) {
+        detailsIn.placeholder = localStorage['details'];
+    } else {
+        detailsIn.placeholder = "Click edit to start writing your party details!"
+    }
+}
 
 
 createBtn.addEventListener("click", create);
 updateBtn.addEventListener("click", update);
 deleteBtn.addEventListener("click", remove);
 viewBtn.addEventListener("click", viewer);
+
+editBtn.addEventListener("click", openEditor);
+saveBtn.addEventListener("click", saveEditor);
+cancelBtn.addEventListener("click", cancelEditor);
