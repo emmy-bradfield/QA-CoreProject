@@ -1,14 +1,11 @@
-body{
-    background-color:aquamarine;
-    box-shadow: 5px 10px 20px 5px rgb(89, 199, 125);
-    height: 100vh;
+body {
+    background-color: aquamarine;
+    background-size: cover;
     color: black;
     display: inline-flex;
-    width: 100vw;
+    width: 100%;
     justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    align-content: flex-start;
+    align-content: space-around;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -16,8 +13,6 @@ body{
     background-color: rgb(206, 206, 206);
     box-shadow: 5px 10px 20px 5px rgb(143, 143, 143) inset;
     width: 30%;
-    margin-left: auto;
-    margin-right: auto;
     height: fit-content;
     padding: 1em;
     margin-top: 5em;
@@ -41,4 +36,33 @@ body{
     margin-left:auto;
     margin-right:auto;
     margin-top:2em;
+}
+
+.slim-container{
+    width:30%;
+    padding: 1em;
+    margin-top:3em;
+}
+
+.wide-container{
+    width:55%;
+    margin-top:3em;
+    padding:1em;
+    margin-bottom:5em;
+}
+
+.right-btn{
+    width: fit-content;
+    margin-top: 1em;
+    background-color: rgba(209, 208, 208, 0.712);
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+}
+
+li{
+    list-style: none;
+}
+
+ul{
+    text-align: left;
 }

@@ -28,22 +28,106 @@
 
 <body onload="startScripts()">
 
-    <input id="guestID-hidden" type="text" class="invisible no-space">
-
-    <div class="container head-container">
-        <div id="partyDetails" class="simple-container">
+    <div class="container slim-container">
+        <div id="partyDetails">
             <div id="detailsDiv">
                 <h4 id="openEditor" class="btn-title"> Welcome to the party!</h4>
                 <div class="mb-3">
                     <textarea class="form-control" id="detailsOut" rows="3"
                         placeholder="Press edit to start writing your party details" disabled></textarea>
-                    </div>
                 </div>
-                
             </div>
+
         </div>
     </div>
 
+    <div class="container wide-container">
+        <div id="userProfile" class="simple-container">
+            <h4 id="userName"> Full Name </h4>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="button-row">
+                    <h6>RSVP</h6>
+                    <button id="settings" class="icon-btn fa-solid fa-pen" data-bs-toggle="tooltip"
+                        data-bs-title="Edit Response" data-bs-placement="bottom"></button>
+                </div>
+                <hr>
+                <ul>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                I will be attending the event
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                I will need somewhere to stay
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                I will need somewhere to park
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div>
+                <div class="button-row">
+                    <h6>My details</h6>
+                    <button id="editUser" class="icon-btn fa-solid fa-gear" data-bs-toggle="tooltip"
+                        data-bs-title="Account Settings" data-bs-placement="bottom"></button>
+                </div>
+                <hr>
+
+                <ul>
+                    <li>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Full name"
+                                disabled>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="formGroupExampleInput"
+                                placeholder="Email address" disabled>
+                        </div>
+                    </li>
+                    <h6 class="smaller"> Change password </h6>
+                    <form class="row gy-2 gx-3 align-items-center">
+                        <div class="col-auto">
+                            <input type="password" class="form-control" id="oldPass"
+                                placeholder="Current Password" disabled>
+                        </div>
+
+                        <div class="col-auto">
+                            <input type="password" class="form-control" id="newPass" placeholder="New Password" disabled>
+                        </div>
+
+                        <div class="col-auto">
+                            <input type="password" class="form-control" id="newPassTwo" placeholder="Repeat Password" disabled>
+                        </div>
+                    </form>
+                </ul>
+
+            </div>
+        </div>
+
+        <input id="guestID-hidden" type="text" class="invisible no-space">
+    </div>
+    </div>
 
 
     <!-- ============================================ Javascript references ============================================ -->

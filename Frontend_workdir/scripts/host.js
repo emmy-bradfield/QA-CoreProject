@@ -197,8 +197,8 @@ let saveEditor = () =>{
     let partyDetails = detailsIn.value;
     localStorage.setItem("details", partyDetails);
     editBtn.setAttribute("class", "btn btn-light right-btn-2");
-    saveBtn.setAttribute("class", "invisible");
-    cancelBtn.setAttribute("class", "invisible");
+    saveBtn.setAttribute("class", "invisible no-space");
+    cancelBtn.setAttribute("class", "invisible no-space");
     detailsIn.placeholder = partyDetails;
     detailsIn.disabled = true;
 }
@@ -206,8 +206,8 @@ let saveEditor = () =>{
 let cancelEditor = () => {
     detailsIn.value = "";
     editBtn.setAttribute("class", "btn btn-light right-btn-2");
-    saveBtn.setAttribute("class", "invisible");
-    cancelBtn.setAttribute("class", "invisible");
+    saveBtn.setAttribute("class", "invisible no-space");
+    cancelBtn.setAttribute("class", "invisible no-space");
     detailsIn.disabled = true;
 }
 
