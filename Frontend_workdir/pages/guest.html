@@ -57,31 +57,35 @@
                 <ul>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="attend" disabled>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                I will be attending the event
+                            
+                                <select id="attendIn" class="form-select" aria-label="Default select example" disabled>
+                                    <option value=true>I will be attending the party</option>
+                                    <option value=false>I won't be attending</option>
+                                  </select>
                             </label>
                         </div>
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="stay" disabled>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                I will need somewhere to stay
-                            </label>
+                            
+                            <select id="stayIn" class="form-select" aria-label="Default select example" disabled>
+                                <option value=true>I will need somewhere to stay</option>
+                                <option value=false>I do not need accomodation</option>
+                              </select>
                         </div>
                     </li>
                     <li>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="park" disabled>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                I will need somewhere to park
-                            </label>
+                            
+                            <select id="parkIn" class="form-select" aria-label="Default select example" disabled>
+                                <option value=true>I will be driving and need a parking permit</option>
+                                <option value=false>I do not need a parking permit</option>
+                              </select>
                         </div>
                     </li>
                 </ul>
+                <button id="saveRSVP" class="icon-btn fa-solid fa-circle-check invisible no-space"></button>
             </div>
-            <button id="saveRSVP" class="icon-btn fa-solid fa-circle-check invisible no-space"></button>
         </div>
         <br>
         <div class="card">
