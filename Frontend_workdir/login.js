@@ -27,6 +27,9 @@ let validate = () => {
             let password = result.password;
             localStorage.setItem("password", password)
             let host = result.host;
+            if (result.active == false) {
+                axios.put(`http://localhost:8080/activate?id=${hiddenID}`)
+            }
             login(host);
         }
     }).catch(err => {
