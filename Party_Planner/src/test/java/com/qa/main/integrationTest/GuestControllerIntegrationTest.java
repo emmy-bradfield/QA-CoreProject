@@ -40,12 +40,11 @@ public class GuestControllerIntegrationTest {
 	@Test
 	public void createTest() throws Exception {
 		// 1) Create an object for posting
-		Guest create = new Guest(2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "toot", false, false,
-				false, false);
+		Guest create = new Guest("James Bradfield", "jamesbradfield270901@gmail.com");
 		String createJSON = mapper.writeValueAsString(create); // turn it into a JSON object
 
 		// 2) Create the expected object
-		Guest expected = new Guest(2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "toot", false, false,
+		Guest expected = new Guest(2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "rootin-tootin", false, false,
 				false, false);
 		String expectedJSON = mapper.writeValueAsString(expected);
 
@@ -109,6 +108,18 @@ public class GuestControllerIntegrationTest {
 
 		mvc.perform(put("/respond?id=1").contentType(MediaType.APPLICATION_JSON).content(respondJSON))
 				.andExpect(content().json(expectedJSON));
+	}
+	
+	@Test
+	public void activateTest() throws Exception {
+		Guest inactive = new Guest("James Bradfield", "jamesbradfield270901@gmail.com");
+		String inactiveJSON = mapper.writeValueAsString(inactive);
+		
+		Guest active = new Guest (2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "rootin-tootin", true, false, false, false);
+		String activeJSON = mapper.writeValueAsString(active);
+		
+		mvc.perform(post("/create").contentType(MediaType.APPLICATION_JSON).content(inactiveJSON));
+		mvc.perform(put("/activate?id=2").contentType(MediaType.APPLICATION_JSON)).andExpect(content().json(activeJSON));
 	}
 
 	@Test

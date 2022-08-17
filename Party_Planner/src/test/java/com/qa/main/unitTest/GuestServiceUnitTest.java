@@ -1,6 +1,7 @@
 package com.qa.main.unitTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
@@ -50,28 +51,36 @@ public class GuestServiceUnitTest {
 	
 	@Test
 	public void view() {
+		Long id = 1L;
 		Guest guest = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, false, false);
 		Optional<Guest> guestOp = Optional.ofNullable(guest);
 		
 		Mockito.when(repo.findById(1L)).thenReturn(guestOp);
+		
+		assertEquals(guest, service.view(id));
 	}
 	
 	@Test
 	public void viewEmail() {
+		String email = "emily-bradfield@outlook.com";
 		Guest guest = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, false, false);
 		Optional<Guest> guestOp = Optional.ofNullable(guest);
 		
-		Mockito.when(repo.findByEmail("emily-bradfield@outlook.com")).thenReturn(guestOp);
+		Mockito.when(repo.findByEmail(email)).thenReturn(guestOp);
+		
+		assertEquals(guest, service.viewEmail(email));
 	}
 	
 	@Test
 	public void update() {
 		Long id = 1L;
-		Guest update = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root2", true, true, false, false);		
-		Guest expected = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root2", true, true, false, false);
-		Optional<Guest> expectedOp = Optional.ofNullable(expected);
+		Guest update = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root2", true, true, false, false);
+		Optional<Guest> updateOp = Optional.ofNullable(update);
 		
-		Mockito.when(repo.findById(id)).thenReturn(expectedOp);
+		Guest expected = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root2", true, true, false, false);
+		
+		
+		Mockito.when(repo.findById(id)).thenReturn(updateOp);
 		Mockito.when(repo.saveAndFlush(update)).thenReturn(expected);
 		
 		assertEquals(expected, service.update(id, update));
@@ -82,15 +91,29 @@ public class GuestServiceUnitTest {
 		Long id = 1L;
 		Guest respond = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, true,
 				false);
+		Optional<Guest> respondOp = Optional.ofNullable(respond);
 
 		Guest expected = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, true,
 				false);
-		Optional<Guest> expectedOp = Optional.ofNullable(expected);
+
 		
-		Mockito.when(repo.findById(id)).thenReturn(expectedOp);
+		Mockito.when(repo.findById(id)).thenReturn(respondOp);
 		Mockito.when(repo.saveAndFlush(respond)).thenReturn(expected);
 		
 		assertEquals(expected, service.update(id, respond));
+	}
+	
+	@Test
+	public void activateTest() throws Exception {
+		Long id = 2L;
+		Guest inactive = new Guest("James Bradfield", "jamesbradfield270901@gmail.com");	
+		Optional<Guest> inactiveOp = Optional.ofNullable(inactive);
+		Guest active = new Guest (2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "rootin-tootin", true, false, false, false);
+		
+		Mockito.when(repo.findById(id)).thenReturn(inactiveOp);
+		Mockito.when(repo.saveAndFlush(inactive)).thenReturn(active);
+		
+		assertEquals(active, service.activate(id));
 	}
 	
 	@Test

@@ -19,6 +19,12 @@ public class GuestService {
 	}
 
 	public Guest create(Guest guest) {
+		guest.setHost(false);
+		guest.setPassword("rootin-tootin");
+		guest.setActive(false);
+		guest.setAttend(false);
+		guest.setAccom(false);
+		guest.setPark(false);
 		return this.repo.saveAndFlush(guest);
 	}
 
@@ -53,6 +59,13 @@ public class GuestService {
 		guest.setAttend(newGuest.getAttend());
 		guest.setAccom(newGuest.getAccom());
 		guest.setPark(newGuest.getPark());
+		return this.repo.saveAndFlush(guest);
+	}
+	
+	public Guest activate (Long id) {
+		Optional<Guest> guestOp = this.repo.findById(id);
+		Guest guest = guestOp.get();
+		guest.setActive(true);
 		return this.repo.saveAndFlush(guest);
 	}
 	
