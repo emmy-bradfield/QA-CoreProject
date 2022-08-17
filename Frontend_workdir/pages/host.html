@@ -31,14 +31,15 @@
     <div class="container head-container">
         <div id="partyDetails">
             <div id="detailsDiv">
-                <h4 id="openEditor" class="btn-title"> Your party details: <button id="editDetails" class="btn btn-light right-btn-2">Edit</button></h4>
+                <h4 id="openEditor" class="btn-title"> Your party details: <button id="editDetails"
+                        class="btn btn-light right-btn-2">Edit</button></h4>
                 <div class="mb-3">
-                    <textarea class="form-control" id="detailsIn" rows="3"
-                         disabled style="height:fit-content;"></textarea>
+                    <textarea class="form-control" id="detailsIn" rows="3" disabled
+                        style="height:fit-content;"></textarea>
                 </div>
                 <button id="saveDetails" class="btn btn-light right-btn-2 invisible no-space">Save</button>
                 <button id="discard" class="btn btn-light right-btn-2 invisible no-space">Cancel</button>
-                
+
             </div>
         </div>
     </div>
@@ -49,12 +50,8 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="nav-add-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
                         type="button" role="tab" aria-controls="nav-home" aria-selected="true">Invite</button>
-                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
-                        type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Edit</button>
                     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Inspect</button>
-                    <button class="nav-link" id="nav-message-tab" data-bs-toggle="tab" data-bs-target="#nav-message"
-                        type="button" role="tab" aria-controls="nav-message" aria-selected="false">Delete</button>
+                        type="button" role="tab" aria-controls="nav-contact" aria-selected="false">QuickView</button>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tab">
@@ -77,27 +74,6 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                    <h5> Enter the guest details below </h5>
-                    <div class="row g-3">
-                        <div class="col">
-                            <input id="updateID" type="text" class="form-control" placeholder="ID"
-                                aria-label="First name">
-                        </div>
-                        <div class="col">
-                            <input id="updateName" type="text" class="form-control" placeholder="Full Name"
-                                aria-label="Last name">
-                        </div>
-                        <div class="row g-2">
-                            <input id="updateEmail" type="text" class="form-control" placeholder="Email"
-                                aria-label="Last name">
-                        </div>
-                    </div>
-                    <div class="row j-right">
-                        <button id="updateBtn" type="button" class="btn btn-light right-btn">Update</button>
-                    </div>
-                </div>
-
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                     <h5> Enter the guest details below </h5>
                     <div class="row g-3">
@@ -114,30 +90,17 @@
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="nav-message" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                    <h5> Enter the guest details below </h5>
-                    <div class="row g-3">
-                        <div class="col">
-                            <input id="deleteID" type="text" class="form-control" placeholder="ID"
-                                aria-label="First name">
-                        </div>
-                        <div class="col">
-
-                        </div>
-                    </div>
-                    <div class="row j-right">
-                        <button id="deleteBtn" type="button" class="btn btn-light right-btn">Delete</button>
-                    </div>
-                </div>
-
             </div>
         </form>
     </div>
 
-
     <div id="R" class="container wide-container">
         <h5 class="h5-title"> Your guest list </h5>
-        <div id="view"></div>
+        <div id="view" class="accordion"> 
+
+        </div>
+
+
     </div>
 
     <!-- ============================================ Javascript references ============================================ -->

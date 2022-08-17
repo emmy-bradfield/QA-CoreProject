@@ -25,47 +25,159 @@ let saveBtn = document.querySelector("#saveDetails");
 let cancelBtn = document.querySelector("#discard");
 let detailsIn = document.querySelector("#detailsIn");
 
+let editModal = document.querySelector("#editModal");
+
+let inputOne;
+let inputTwo;
+
 let printResults = (result) => {
-    let subView = document.createElement("div");
-    let subView2 = document.createElement("div");
-    let listItem = document.createElement("div");
-    listItem.setAttribute("class", "list-item");
-    subView.setAttribute("class", "guest-head");
-    subView2.setAttribute("class", "guest-body");
+    let newAccordian = document.createElement("div");
+    newAccordian.setAttribute("class", "accordion-item");
+
+    let guestName = document.createElement("h2");
+    guestName.setAttribute("class", "accordion-header");
+
+    let accordianBody = document.createElement("div");
+    accordianBody.setAttribute("class", "accordion-collapse collapse");
+    accordianBody.setAttribute("id", `guest-${result.id}`);
+
+    let guestDetails = document.createElement("div");
+    guestDetails.setAttribute("class", "accordion-body");
+
+    let responseDetails = document.createElement("ul");
+    let itemOne = document.createElement("li");
+    let itemTwo = document.createElement("li");
+    let itemThree = document.createElement("li");
+
+    let expandGuest = document.createElement("button");
+    expandGuest.setAttribute("data-bs-toggle", "collapse");
+    expandGuest.setAttribute("data-bs-target", `#guest-${result.id}`);
+    expandGuest.setAttribute("class", "accordion-button collapsed");
+
+    let editGuest = document.createElement("button");
+    editGuest.setAttribute("class", "icon-btn fa-solid fa-pen-to-square")
+
+    let deleteGuest = document.createElement("button");
+    deleteGuest.setAttribute("class", "icon-btn fa-solid fa-trash-can")
+
+    let buttonDiv = document.createElement("div");
+    buttonDiv.setAttribute("class", "j-right btn-margin");
+
+    let inputZero = document.createElement("input");
+    inputZero.setAttribute("class", "invisible no-space");
+    inputZero.value = result.id;
+    inputZero.disabled = true;
+
+    let inputOne = document.createElement("input");
+    inputOne.setAttribute("class", "form-control invisible no-space");
+    inputOne.disabled = true;
+    inputOne.setAttribute("type", "text");
+    let inputTwo = document.createElement("input");
+    inputTwo.setAttribute("class", "form-control");
+    inputTwo.disabled = true;
+    inputTwo.setAttribute("type", "text");
+    let saveGuest = document.createElement("button");
+    saveGuest.setAttribute("class", "invisible no-space");
+    saveGuest.disabled = true;
+    saveGuest.setAttribute("style", "margin-left:1em;margin-bottom:1em;")
+
 
     if (result.host == true) {
-        subView.textContent = `#${result.id} - ${result.name} (${result.email}) [host]`;    
-    }
-    else {
-    subView.textContent = `#${result.id} - ${result.name} (${result.email})`;
-    }
+        expandGuest.textContent = `#${result.id} - ${result.name}`;
+        itemOne.textContent = `${result.name} is hosting this event`;
+        responseDetails.appendChild(itemOne);
+        editGuest.disabled;
+        deleteGuest.disabled = true;
+        deleteGuest.setAttribute("class", "invisible no-space");
+    } else {
+        expandGuest.textContent = `#${result.id} - ${result.name}`;
+        if (result.active != true) {
+            responseDetails.textContent = `this user account has not been activated`;
+        } else {
+            let attend = "✘";
+            let stay = "✘";
+            let park = "✘";
+            if (result.attend == true) {
+                attend = "✔";
+                if (result.accom == true) {
+                    stay = "✔";
+                }
+                if (result.park == true) {
+                    park = "✔";
+                }
+                itemOne.textContent = `${attend} | Attending`;
+                itemTwo.textContent = `${stay} | Staying `;
+                itemThree.textContent = `${park} | Parking`;
+                responseDetails.appendChild(itemOne);
+                responseDetails.appendChild(itemTwo);
+                responseDetails.appendChild(itemThree);
+            } else {
+                itemOne.textContent = `${attend} | Attending`;
+                responseDetails.appendChild(itemOne);
+            }
 
-    if (result.active != true) {
-        subView2.textContent = `this user account has not been activated`
-    }
-    else {
-        let attend = "no";
-        let stay = "no";
-        let park = "no";
-        if (result.attend == true) {
-            attend = "yes";
+
+
         }
-        if (result.accom == true) {
-            stay = "yes";
-        }
-        if (result.park == true) {
-            park = "yes";
-        }
 
-    subView2.textContent = `attending: ${attend} | staying: ${stay} | parking: ${park}`
     }
+    guestDetails.appendChild(inputOne);
+    guestDetails.appendChild(inputTwo);
 
-    listItem.appendChild(subView);
-    listItem.appendChild(subView2);
+    inputOne.value = result.name;
+    inputTwo.value = result.email;
 
-    view.appendChild(listItem);
+    accordianBody.appendChild(guestDetails);
+    accordianBody.appendChild(responseDetails);
+    buttonDiv.appendChild(editGuest)
+    buttonDiv.appendChild(deleteGuest);
+    accordianBody.appendChild(buttonDiv);
+    accordianBody.appendChild(saveGuest);
+    guestName.appendChild(expandGuest);
+    newAccordian.appendChild(guestName);
+    newAccordian.appendChild(accordianBody);
+    view.appendChild(newAccordian);
 
+    editGuest.addEventListener("click", () => {
+        editGuest.setAttribute("class", "invisible no-space");
+        editGuest.disabled = true;
+        deleteGuest.setAttribute("class", "invisible no-space");
+        deleteGuest.disabled = true;
+        saveGuest.setAttribute("class", "icon-btn fa-solid fa-circle-check");
+        saveGuest.disabled = false;
+        accordianBody.appendChild(saveGuest);
+        inputTwo.disabled = false;
+        inputOne.disabled = false;
+        inputOne.setAttribute("class", "form-control");
+        saveGuest.addEventListener("click", 
+        () => {
+            let guest = {
+                "name": inputOne.value,
+                "email": inputTwo.value
+            }
+
+            axios.put(`http://localhost:8080/update?id=${inputZero.value}`, guest)
+                .then( () => {
+                    inputOne.setAttribute("class", "invisible no-space");
+                    inputTwo.disabled = true;
+                    saveGuest.disabled = true;
+                    saveGuest.setAttribute("class", "invisible no-space");
+                    viewAll();
+                }).catch(err => { console.log(err); });
+        })
+
+    })
+
+    deleteGuest.addEventListener("click", () => {
+        axios.delete(`http://localhost:8080/delete?id=${inputZero.value}`)
+            .then(() => {
+                viewAll()
+            }).catch(err => { console.log(err); });
+    }
+    )
 }
+
+
 
 let create = () => {
 
@@ -96,91 +208,67 @@ let viewAll = () => {
 let viewer = () => {
     let id = viewID.value;
     axios.get(`http://localhost:8080/view?id=${id}`)
-    .then(res => {
-        let result = res.data;
+        .then(res => {
+            let result = res.data;
 
-        let active = "no";
-        let attend = "no";
-        let stay = "no";
-        let park = "no";
+            let active = "✘";
+            let attend = "✘";
+            let stay = "✘";
+            let park = "✘";
 
-        if (result.active != true) {
-            attend = "n/a - account inactive";
-            stay = "n/a - account inactive";
-            park = "n/a - account inactive";
-        }
-
-        if (result.active == true) {
-            active = "yes";
-            if (attend == true) {
-                attend = "yes";
+            if (result.active == true) {
+                active = "✔";
+                if (attend == true) {
+                    attend = "✔";
+                }
+                if (stay == true) {
+                    stay = "✔";
+                }
+                if (park == true) {
+                    park = "✔";
+                }
             }
-            if (stay == true) {
-                stay = "yes";
-            }
-            if (park == true) {
-                park = "yes";
-            }
-        }
-        view.innerHTML="";
-        let singleView = document.createElement("ul");
-        let refresh = document.createElement("button");
-        refresh.setAttribute("class", "btn btn-light right-btn fa-solid fa-arrow-rotate-right");
-        refresh.addEventListener("click", viewAll)
-        let title = document.createElement("h6");
-        title.setAttribute("class", "guest-head")
-        let titleTwo = document.createElement("h6");
-        titleTwo.setAttribute("class", "guest-body")
-        let lineOne = document.createElement("li");
-        let lineTwo = document.createElement("li");
-        let lineThree = document.createElement("li");
-        let lineFour = document.createElement("li");
+            view.innerHTML = "";
+            let tempDiv = document.createElement("div");
+            tempDiv.setAttribute("class", "j-right")
+            let singleView = document.createElement("ul");
+            let refresh = document.createElement("button");
+            refresh.setAttribute("class", "btn btn-light btn-margin right-btn fa-solid fa-arrow-rotate-right");
+            refresh.addEventListener("click", viewAll)
+            tempDiv.appendChild(refresh);
+            let title = document.createElement("h6");
+            title.setAttribute("class", "guest-head")
+            let titleTwo = document.createElement("h6");
+            titleTwo.setAttribute("class", "guest-body")
+            let lineOne = document.createElement("li");
+            let lineTwo = document.createElement("li");
+            let lineThree = document.createElement("li");
+            let lineFour = document.createElement("li");
 
-        if (result.host == true) {
-            title.textContent = `Host: ${result.name}`
-        } else {
-            title.textContent = `Guest #${result.id}: ${result.name}`
-        }
+            if (result.host == true) {
+                title.textContent = `Host: ${result.name}`
+            } else {
+                title.textContent = `Guest #${result.id}: ${result.name}`
+            }
 
-        titleTwo.textContent = `(${result.email})`;
-        lineOne.textContent = `Is ${result.name}'s account activated? | ${active} |` 
-        lineTwo.textContent = `Have they confirmed attendance? | ${attend} |`
-        lineThree.textContent = `Have they requested accomodation? | ${stay} |`
-        lineFour.textContent = `Have they requested a parking permit? | ${park} |`;
-        
-        singleView.appendChild(lineOne);
-        singleView.appendChild(lineTwo);
-        singleView.appendChild(lineThree);
-        singleView.appendChild(lineFour);
-        view.appendChild(title);
-        view.appendChild(titleTwo);
-        view.appendChild(singleView);
-        view.appendChild(refresh);
-    })
+            titleTwo.textContent = `(${result.email})`;
+            lineOne.textContent = `${active} | Activated Account`
+            lineTwo.textContent = `${attend} | Confirmed Attendance`
+            lineThree.textContent = `${stay} | Requested Accomodation`
+            lineFour.textContent = `${park} | Requested Parking`;
+
+            singleView.appendChild(lineOne);
+            singleView.appendChild(lineTwo);
+            singleView.appendChild(lineThree);
+            singleView.appendChild(lineFour);
+            view.appendChild(title);
+            view.appendChild(titleTwo);
+            view.appendChild(singleView);
+            view.appendChild(refresh);
+        })
 }
 
-let update = () => {
-    let id = updateID.value;
-    let guest = {
-        "name": updateName.value,
-        "email": updateEmail.value
-    }
-    
-    axios.put(`http://localhost:8080/update?id=${id}`, guest)
-    .then(res => {
-        viewAll();
-    }).catch(err => { console.log(err); });
-}
-
-let remove = () => {
-    let id = deleteID.value;
-    axios.delete(`http://localhost:8080/delete?id=${id}`)
-    .then (res => {
-        viewAll()
-    }).catch(err => { console.log(err); });
-}
-
-let openEditor = () =>{
+let openEditor = () => {
     editBtn.setAttribute("class", "invisible");
     saveBtn.setAttribute("class", "btn btn-light right-btn-2 visible");
     cancelBtn.setAttribute("class", "btn btn-light right-btn-2 visible");
@@ -188,7 +276,7 @@ let openEditor = () =>{
     detailsIn.textContent = localStorage['details'];
 }
 
-let saveEditor = () =>{
+let saveEditor = () => {
     localStorage.removeItem('details');
     let partyDetails = detailsIn.value;
     localStorage.setItem("details", partyDetails);
@@ -207,7 +295,7 @@ let cancelEditor = () => {
     detailsIn.disabled = true;
 }
 
-let startScript = () =>{
+let startScript = () => {
     viewAll();
     if (localStorage['details'] != null) {
         detailsIn.placeholder = localStorage['details'];
@@ -218,8 +306,6 @@ let startScript = () =>{
 
 
 createBtn.addEventListener("click", create);
-updateBtn.addEventListener("click", update);
-deleteBtn.addEventListener("click", remove);
 viewBtn.addEventListener("click", viewer);
 
 editBtn.addEventListener("click", openEditor);
