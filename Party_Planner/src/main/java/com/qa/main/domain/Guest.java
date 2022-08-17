@@ -44,6 +44,12 @@ public class Guest {
 		this.password=password;
 	}
 	
+	public Guest(Boolean attend, Boolean accom, Boolean park) {
+		this.attend=attend;
+		this.accom=accom;
+		this.park=park;
+	}
+	
 	public Guest(Long id, Boolean host, String name, String email, String password, Boolean active, Boolean attend, Boolean accom, Boolean park) {
 		this.id=id;
 		this.host=host;
