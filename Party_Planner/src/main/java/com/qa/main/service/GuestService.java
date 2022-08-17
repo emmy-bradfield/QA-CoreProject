@@ -62,6 +62,13 @@ public class GuestService {
 		return this.repo.saveAndFlush(guest);
 	}
 	
+	public Guest activate (Long id) {
+		Optional<Guest> guestOp = this.repo.findById(id);
+		Guest guest = guestOp.get();
+		guest.setActive(true);
+		return this.repo.saveAndFlush(guest);
+	}
+	
 	public Boolean delete(Long id) {
 		this.repo.deleteById(id);
 		Boolean exists = this.repo.existsById(id);
