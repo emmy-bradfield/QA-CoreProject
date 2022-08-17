@@ -53,6 +53,14 @@ p {
     text-align: left;
     font-variant: small-caps;
     font-weight: bold;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.btn-head{
+    display: inline-flex;
+    justify-content: flex-end;
 }
 
 .guest-body {
@@ -160,4 +168,94 @@ textarea.form-control {
 
 #detailsDiv{
 height:fit-content;
+}
+
+.accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgba(240, 255, 255, 0.568) inset;
+    border: 1px solid lightblue;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+}
+
+.accordion-button:hover{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px azure inset;
+    border: 1px solid lightblue;
+}
+
+.accordion-button:active{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgb(144, 179, 179) inset;
+    border: 1px solid lightblue;
+}
+
+.accordion-button:focus {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgba(240, 255, 255, 0.568) inset;
+    border: 1px solid lightblue;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+}
+
+.accordion-button:not(.collapsed) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgba(240, 255, 255, 0.568) inset;
+    border: 1px solid lightblue;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+}
+
+.btn-margin{
+    margin-bottom: 1em;
+    width:99%;
 }
