@@ -1,0 +1,261 @@
+/* 2) Wide-container/Guest List display features */
+body {
+    background-color: aquamarine;
+    background-size: cover;
+    color: black;
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-content: space-around;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-wrap: wrap;
+}
+
+.head-container {
+    width: 100%;
+    margin-top: 2em;
+    height: fit-content;
+}
+
+.slim-container {
+    width: 30%;
+    padding: 1em;
+    margin-top: 3em;
+}
+
+.wide-container {
+    width: 55%;
+    margin-top: 3em;
+    padding: 1em;
+    margin-bottom: 5em;
+}
+
+/*      a. List order and decoration */
+
+
+
+p {
+    margin-bottom: 0;
+}
+
+.list-item {
+    width: 100%;
+    background-color: #2b405538;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/*     b. Text and font styles */
+
+.guest-head {
+    text-align: left;
+    font-variant: small-caps;
+    font-weight: bold;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.btn-head{
+    display: inline-flex;
+    justify-content: flex-end;
+}
+
+.guest-body {
+    font-style: italic;
+}
+
+/* 3) Precise form control (mostly Bootstrap Overrides) */
+
+.tab-content {
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 5px 5px 10px 5px lightgrey inset;
+    padding: 1em;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: var(--bs-nav-tabs-link-active-color);
+    background-color: white;
+    border: 1px solid black;
+    border-bottom: 0;
+    box-shadow: 5px 5px 10px 5px lightgrey inset;
+}
+
+.nav-link {
+    color: var(--bs-nav-tabs-link-active-color);
+    background-color: white;
+    border: 1px solid black;
+    border-bottom: 0;
+    box-shadow: 5px 5px 10px 5px lightgrey inset;
+}
+
+.nav-tabs .nav-link {
+    color: var(--bs-nav-tabs-link-active-color);
+    background-color: white;
+    border: 1px solid darkgrey;
+    border-bottom: 0;
+    box-shadow: 5px 5px 10px 5px rgba(211, 211, 211, 0.678) inset;
+}
+
+.j-right {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: fit-content;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    margin-bottom: 1em;
+}
+
+textarea.form-control {
+    max-height: fit-content;
+    min-height: 0;
+}
+
+.g-2 {
+    width: 97%;
+    margin-left: 0.3em;
+}
+
+/* 4) Button and button-container display */
+
+
+
+.right-btn-2 {
+    width: fit-content;
+    background-color: rgba(255, 255, 255, 0.712);
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+}
+
+.btn-title {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+}
+
+.no-space {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.mb-3{
+    max-height: fit-content;
+}
+
+#detailsDiv{
+height:fit-content;
+}
+
+.accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgba(240, 255, 255, 0.568) inset;
+    border: 1px solid lightblue;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+}
+
+.accordion-button:hover{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px azure inset;
+    border: 1px solid lightblue;
+}
+
+.accordion-button:active{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgb(144, 179, 179) inset;
+    border: 1px solid lightblue;
+}
+
+.accordion-button:focus {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgba(240, 255, 255, 0.568) inset;
+    border: 1px solid lightblue;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+}
+
+.accordion-button:not(.collapsed) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgba(240, 255, 255, 0.568) inset;
+    border: 1px solid lightblue;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: var(--bs-accordion-transition);
+}
+
+.btn-margin{
+    margin-bottom: 1em;
+    width:99%;
+}
