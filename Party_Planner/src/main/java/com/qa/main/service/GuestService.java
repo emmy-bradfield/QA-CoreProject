@@ -43,6 +43,16 @@ public class GuestService {
 		Guest guest = guestOp.get();
 		guest.setName(newGuest.getName());
 		guest.setEmail(newGuest.getEmail());
+		guest.setPassword(newGuest.getPassword());
+		return this.repo.saveAndFlush(guest);
+	}
+	
+	public Guest respond(Long id, Guest newGuest) {
+		Optional<Guest> guestOp = this.repo.findById(id);
+		Guest guest = guestOp.get();
+		guest.setAttend(newGuest.getAttend());
+		guest.setAccom(newGuest.getAccom());
+		guest.setPark(newGuest.getPark());
 		return this.repo.saveAndFlush(guest);
 	}
 	

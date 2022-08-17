@@ -53,6 +53,11 @@ public class GuestController {
 		return service.update(id, guest);
 	}
 	
+	@PutMapping ("/respond")
+	public Guest respond(@PathParam("id") Long id, @RequestBody Guest guest) {
+		return service.respond(id, guest);
+	}
+	
 	@DeleteMapping("/delete")
 	public ResponseEntity<Boolean> delete(@PathParam("id")Long id){
 		return new ResponseEntity<Boolean>(service.delete(id), HttpStatus.OK);
