@@ -20,9 +20,9 @@ let fullName = document.querySelector("#userName");
 
 let nameIn = document.querySelector("#guestName");
 let emailIn = document.querySelector("#guestEmail");
-let attendIn = document.querySelector("#attend");
-let stayIn = document.querySelector("#stay");
-let parkIn = document.querySelector("#park");
+let attendIn = document.querySelector("#attendIn");
+let stayIn = document.querySelector("#stayIn");
+let parkIn = document.querySelector("#parkIn");
 
 let rsvpBtn = document.querySelector("#rsvp");
 let saveRSVP = document.querySelector("#saveRSVP");
@@ -57,7 +57,7 @@ let importUser = () => {
             localStorage.setItem("email", user.email);
             localStorage.setItem("active", true);
             localStorage.setItem("attend", user.attend);
-            localStorage.setItem("stay", user.stay);
+            localStorage.setItem("stay", user.accom);
             localStorage.setItem("park", user.park);
 
             fullName.innerHTML = "";
@@ -68,6 +68,13 @@ let importUser = () => {
             emailIn.placeholder = localStorage["email"];
             emailIn.textContent = localStorage["email"];
 
+            nameIn.value = localStorage.name;
+            emailIn.value = localStorage.email;
+            newPass.value = localStorage.password;
+            attendIn.value=localStorage.attend;
+            stayIn.value=localStorage.stay;
+            parkIn.value=localStorage.park;
+
         })
 }
 
@@ -77,34 +84,62 @@ let editUser = () =>{
     emailIn.disabled = false;
     newPass.disabled = false;
     saveUser.setAttribute("class", "icon-btn fa-solid fa-circle-check");
-    nameIn.value = localStorage["name"];
-    emailIn.value = localStorage["email"];
-    newPass.value = localStorage["password"];
     saveUser.addEventListener("click", editUserTwo)
 }
 
 let editUserTwo = () => {
     let id = embedID.value;
 
+    localStorage.name = nameIn.value;
+    localStorage.email = emailIn.value;
+    localStorage.password = newPass.value;
+
     let guest = {
-        "id": id,
-        "host": false,
         "name": nameIn.value,
         "email": emailIn.value,
-        "password": newPass.value,
-        "active": true,
-        "attend": attend,
-        "accomd": stay,
-        "park": park
+        "password": newPass.value
     }
 
     axios.put(`http://localhost:8080/update?id=${id}`, guest)
+    .then( () => {
+        saveUser.setAttribute ("class", "invisible no-space");
+        settingsBtn.disabled = false;
+        nameIn.disabled = true;
+        emailIn.disabled = true;
+        newPass.disabled = true;
+    }).catch(err => {console.log(err)})
+}
 
-    saveUser.setAttribute ("class", "invisible no-space");
-    settingsBtn.disabled = false;
-    nameIn.disabled = true;
-    emailIn.disabled = true;
-    newPass.disabled = true;
+let rsvp = () => {
+    rsvpBtn.disabled = true;
+    attendIn.disabled = false;
+    stayIn.disabled = false;
+    parkIn.disabled = false;
+    saveRSVP.setAttribute("class", "icon-btn fa-solid fa-circle-check");
+    saveRSVP.addEventListener("click", rsvpTwo)
+}
+
+let rsvpTwo = () => {
+    
+    localStorage.attend = attendIn.value;
+    localStorage.stay = stayIn.value;
+    localStorage.park = parkIn.value;
+    
+    let guest = {
+
+        "attend": localStorage["attend"],
+        "accom": localStorage["stay"],
+        "park": localStorage["park"]
+    }
+
+    axios.put(`http://localhost:8080/respond?id=${id}`, guest)
+    .then( () => {
+    saveRSVP.setAttribute("class", "invisible no-space");
+    attendIn.disabled = true;
+    stayIn.disabled = true;
+    parkIn.disabled = true;
+    rsvpBtn.disabled = false;
+}).catch(err => {console.log(err)})
 }
 
 let startScripts = () => {
@@ -114,3 +149,4 @@ let startScripts = () => {
 }
 
 settingsBtn.addEventListener("click", editUser);
+rsvpBtn.addEventListener("click", rsvp);
