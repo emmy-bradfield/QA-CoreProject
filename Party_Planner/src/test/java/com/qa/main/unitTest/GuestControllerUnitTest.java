@@ -122,6 +122,22 @@ public class GuestControllerUnitTest {
 	}
 	
 	@Test
+	public void activateTest() throws Exception {
+		Long id = 2L;
+		Guest inactive = new Guest("James Bradfield", "jamesbradfield270901@gmail.com");
+		String inactiveJSON = mapper.writeValueAsString(inactive);
+		
+		mvc.perform(post("/create").contentType(MediaType.APPLICATION_JSON).content(inactiveJSON));
+		
+		Guest active = new Guest (2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "rootin-tootin", true, false, false, false);
+		String activeJSON = mapper.writeValueAsString(active);
+		
+		Mockito.when(service.activate(id)).thenReturn(active);
+
+		mvc.perform(put("/activate?id=2").contentType(MediaType.APPLICATION_JSON)).andExpect(content().json(activeJSON));
+	}
+	
+	@Test
 	public void deleteTest() throws Exception {
 		Mockito.when(service.delete(1L)).thenReturn(true);
 		mvc.perform(delete("/delete?id=1"))
