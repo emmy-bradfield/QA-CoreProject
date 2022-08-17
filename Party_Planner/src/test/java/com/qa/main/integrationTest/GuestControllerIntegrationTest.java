@@ -40,12 +40,11 @@ public class GuestControllerIntegrationTest {
 	@Test
 	public void createTest() throws Exception {
 		// 1) Create an object for posting
-		Guest create = new Guest(2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "toot", false, false,
-				false, false);
+		Guest create = new Guest("James Bradfield", "jamesbradfield270901@gmail.com");
 		String createJSON = mapper.writeValueAsString(create); // turn it into a JSON object
 
 		// 2) Create the expected object
-		Guest expected = new Guest(2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "toot", false, false,
+		Guest expected = new Guest(2L, false, "James Bradfield", "jamesbradfield270901@gmail.com", "rootin-tootin", false, false,
 				false, false);
 		String expectedJSON = mapper.writeValueAsString(expected);
 

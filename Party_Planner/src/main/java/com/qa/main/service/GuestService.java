@@ -19,6 +19,12 @@ public class GuestService {
 	}
 
 	public Guest create(Guest guest) {
+		guest.setHost(false);
+		guest.setPassword("rootin-tootin");
+		guest.setActive(false);
+		guest.setAttend(false);
+		guest.setAccom(false);
+		guest.setPark(false);
 		return this.repo.saveAndFlush(guest);
 	}
 
