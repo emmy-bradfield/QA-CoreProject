@@ -26,22 +26,101 @@
 
 </head>
 
-<body onload="shareDetails()">
+<body onload="startScripts()">
 
-    <div class="container head-container">
-        <div id="partyDetails" class="simple-container">
+    <div class="container slim-container">
+        <div id="partyDetails">
             <div id="detailsDiv">
                 <h4 id="openEditor" class="btn-title"> Welcome to the party!</h4>
                 <div class="mb-3">
                     <textarea class="form-control" id="detailsOut" rows="3"
                         placeholder="Press edit to start writing your party details" disabled></textarea>
-                    </div>
                 </div>
-                
             </div>
+
         </div>
     </div>
 
+    <div class="container wide-container">
+        <div id="userProfile" class="simple-container">
+            <h4 id="userName"> Full Name </h4>
+        </div>
+
+        <div class="card">
+            <div id="rsvpDiv">
+                <div class="button-row">
+                    <h6>RSVP</h6>
+                    <button id="rsvp" class="icon-btn fa-solid fa-pen" data-bs-toggle="tooltip"
+                        data-bs-title="Edit Response" data-bs-placement="bottom"></button>
+                </div>
+                <hr>
+                <ul>
+                    <li>
+                        <div class="form-check">
+                            
+                                <select id="attendIn" class="form-select" aria-label="Default select example" disabled>
+                                    <option value=true>I will be attending the party</option>
+                                    <option value=false>I won't be attending</option>
+                                  </select>
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            
+                            <select id="stayIn" class="form-select" aria-label="Default select example" disabled>
+                                <option value=true>I will need somewhere to stay</option>
+                                <option value=false>I do not need accomodation</option>
+                              </select>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            
+                            <select id="parkIn" class="form-select" aria-label="Default select example" disabled>
+                                <option value=true>I will be driving and need a parking permit</option>
+                                <option value=false>I do not need a parking permit</option>
+                              </select>
+                        </div>
+                    </li>
+                </ul>
+                <button id="saveRSVP" class="icon-btn fa-solid fa-circle-check invisible no-space"></button>
+            </div>
+        </div>
+        <br>
+        <div class="card">
+            <div id="settingsDiv">
+                <div class="button-row">
+                    <h6>My details</h6>
+                    <button id="editUser" class="icon-btn fa-solid fa-gear" data-bs-toggle="tooltip"
+                        data-bs-title="Account Settings" data-bs-placement="bottom"></button>
+                </div>
+                <hr>
+
+                <ul>
+                    <li>
+                        <div class="mb-3">
+                            <input id="guestName" type="text" class="form-control" id="formGroupExampleInput" disabled>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mb-3">
+                            <input id="guestEmail" type="text" class="form-control" id="formGroupExampleInput" disabled>
+                        </div>
+                    </li>
+                        <div class="col-auto">
+                            <input type="password" class="form-control" id="newPass" placeholder="New Password" disabled>
+                        </div>
+                </ul>
+
+                <button id="saveUser" class="icon-btn fa-solid fa-circle-check invisible no-space"></button>
+
+            </div>
+        </div>
+
+        <input id="guestID-hidden" type="text" class="invisible no-space">
+    </div>
+    </div>
 
 
     <!-- ============================================ Javascript references ============================================ -->

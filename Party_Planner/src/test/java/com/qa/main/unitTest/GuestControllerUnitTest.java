@@ -106,6 +106,22 @@ public class GuestControllerUnitTest {
 	}
 	
 	@Test
+	public void respondTest() throws Exception {
+		Long id = 1L;
+		Guest respond = new Guest(true, true, false);
+		String respondJSON = mapper.writeValueAsString(respond);
+
+		Guest expected = new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, true,
+				false);
+		String expectedJSON = mapper.writeValueAsString(expected);
+		
+		Mockito.when(service.respond(id, respond)).thenReturn(expected);
+
+		mvc.perform(put("/respond?id=1").contentType(MediaType.APPLICATION_JSON).content(respondJSON))
+				.andExpect(content().json(expectedJSON));
+	}
+	
+	@Test
 	public void deleteTest() throws Exception {
 		Mockito.when(service.delete(1L)).thenReturn(true);
 		mvc.perform(delete("/delete?id=1"))

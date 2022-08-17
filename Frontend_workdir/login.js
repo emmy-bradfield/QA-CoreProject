@@ -6,7 +6,7 @@ let errorDiv = document.querySelector("#error-space");
 let loginBtn = document.querySelector("#loginBtn");
 
 let emilyBtn = document.querySelector("#makeEmily");
-let sadBtn = document.querySelector("#sadBtn")
+let jamesBtn = document.querySelector("#makeJames");
 
 let validate = () => {
     let password = passwordIn.value;
@@ -22,6 +22,10 @@ let validate = () => {
             errorDiv.appendChild(errorMsg)
 
         } else {
+            let hiddenID = result.id;
+            localStorage.setItem("userID", hiddenID);
+            let password = result.password;
+            localStorage.setItem("password", password)
             let host = result.host;
             login(host);
         }
@@ -42,33 +46,4 @@ let login = (host) => {
     }
 }
 
-let emily = () =>{
-    let Emily = {
-        "id": 1,
-        "host": true,
-        "name": "Emily Bradfield",
-        "email": "emily-bradfield@outlook.com",
-        "password": "root",
-        "active": true,
-        "attend": true,
-        "accom": false,
-        "park": false
-    }
-
-    axios.post("http://localhost:8080/create", Emily)
-    .then( res => {
-        errorDiv.innerHTML="";
-        let emily = res.data;
-        let display = document.createElement("h4");
-        display.textContent = `${emily.name} created`;
-        errorDiv.appendChild(display);
-    })
-}
-
-let sad = () => {
-    axios.delete("http://localhost:8080/delete?id=1")
-}
-
 loginBtn.addEventListener("click", validate)
-emilyBtn.addEventListener("click", emily);
-sadBtn.addEventListener("click", sad);

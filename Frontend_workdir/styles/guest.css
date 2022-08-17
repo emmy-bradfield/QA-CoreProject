@@ -1,0 +1,77 @@
+.no-space{
+width:0;
+height:0;
+margin:0;
+padding:0;
+}
+
+.col-auto{
+    width:100%;
+}
+
+.simple-container {
+    padding: 1em;
+    margin:0;
+}
+
+.button-row {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.icon-btn{
+    margin-top:0;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgba(240, 255, 255, 0.568) inset;
+    border: 1px solid lightblue;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+.icon-btn:hover{
+    margin-top:0;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px azure inset;
+    border: 1px solid lightblue;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+.icon-btn:active{
+    margin-top:0;
+    background-color: lightblue;
+    box-shadow: 2px 5px 5px 2px rgb(144, 179, 179) inset;
+    border: 1px solid lightblue;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+.card{
+    padding:1em;
+}
+
+.wide-container{
+    width:55%;
+    margin-right:0;
+    margin-left:0;
+}
+
+.slim-container{
+    width:30%;
+    margin-left:0;
+    margin-right:0;
+}
+
+.container{
+    margin-left:0;
+}
+
+.form-control{
+    width:90%;
+}
+
+.smaller{
+    font-size: smaller;
+}
