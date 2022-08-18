@@ -227,13 +227,13 @@ let viewer = () => {
 
             if (result.active == true) {
                 active = "✔";
-                if (attend == true) {
+                if (result.attend == true) {
                     attend = "✔";
                 }
-                if (stay == true) {
+                if (result.stay == true) {
                     stay = "✔";
                 }
-                if (park == true) {
+                if (result.park == true) {
                     park = "✔";
                 }
             }
