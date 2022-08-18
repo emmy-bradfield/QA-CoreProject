@@ -1,0 +1,36 @@
+.login-form {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#form-space {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    margin-top:0.5em;
+    margin-left:1em;
+    margin-right:1em;
+    width: 100%;
+}
+
+.mb-3{
+    width:100%;
+}
+
+.error{
+    background-color: rgba(218, 165, 32, 0.452);
+    border: 1px solid brown;
+    color: brown;
+    border-radius: 7px;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom:0.5em;
+    padding:0.5em;
+}

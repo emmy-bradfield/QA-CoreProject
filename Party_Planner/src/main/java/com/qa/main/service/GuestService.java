@@ -27,6 +27,16 @@ public class GuestService {
 		guest.setPark(false);
 		return this.repo.saveAndFlush(guest);
 	}
+	
+	public Guest setup(Guest guest) {
+		guest.setId(1L);
+		guest.setHost(true);
+		guest.setActive(true);
+		guest.setAttend(true);
+		guest.setAccom(false);
+		guest.setPark(false);
+		return this.repo.saveAndFlush(guest);
+	}
 
 	public List<Guest> viewAll() {
 		return this.repo.findAll();

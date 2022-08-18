@@ -40,6 +40,16 @@ public class GuestServiceUnitTest {
 	}
 	
 	@Test
+	public void setupTest() throws Exception {
+		Guest host = new Guest("Sue Donym", "sue-donym@gmail.com", "admin");
+		Guest expect = new Guest (1L, true, "Sue Donym", "sue-donym@gmail.com", "admin", true, true, false, false);
+		
+		Mockito.when(repo.saveAndFlush(host)).thenReturn(expect);
+		
+		assertEquals(expect, service.setup(host));
+	}
+	
+	@Test
 	public void viewAll() {
 		List<Guest> result = new ArrayList<>();
 		result.add(new Guest(1L, true, "Emily Bradfield", "emily-bradfield@outlook.com", "root", true, true, false, false));
