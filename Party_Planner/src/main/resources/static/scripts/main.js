@@ -1,5 +1,11 @@
 'use strict'
 
+let logoutBtn = document.querySelector("#logout");
+
+let logout = () => {
+    window.location.replace("../index.html")
+}
+
 let checkSetup = () =>{
     axios.get("http://localhost:8080/viewAll")
     .then (res => {
@@ -13,3 +19,5 @@ let checkSetup = () =>{
         }
     }).catch( err => { console.log(err); })
 }
+
+logoutBtn.addEventListener("click", logout);

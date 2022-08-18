@@ -10,8 +10,14 @@ padding:0;
 }
 
 .simple-container {
-    padding: 1em;
-    margin:0;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: baseline;
+    padding-top:0em;
+    height: fit-content;
+    margin-bottom:1em;
+    padding-left:1em;
 }
 
 .button-row {
