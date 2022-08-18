@@ -33,6 +33,11 @@ public class GuestController {
 		return service.create(guest);
 	}
 	
+	@PostMapping("/setup")
+	public Guest setup(@RequestBody Guest guest) {
+		return service.setup(guest);
+	}
+	
 	@GetMapping("/viewAll")
 	public List<Guest> viewAll(){
 		return this.service.viewAll();

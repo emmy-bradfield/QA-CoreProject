@@ -50,6 +50,19 @@ public class GuestControllerUnitTest {
 		mvc.perform(post("/create").contentType(MediaType.APPLICATION_JSON).content(createJSON))
 				.andExpect(content().json(expectedJSON));
 	}
+	
+	@Test
+	public void setupTest() throws Exception {
+		Guest host = new Guest("Sue Donym", "sue-donym@gmail.com", "admin");
+		String hostJSON = mapper.writeValueAsString(host);
+		
+		Guest expect = new Guest (1L, true, "Sue Donym", "sue-donym@gmail.com", "admin", true, true, false, false);
+		String expectJSON = mapper.writeValueAsString(expect);
+		
+		Mockito.when(service.setup(host)).thenReturn(expect);
+		
+		mvc.perform(post("/setup").contentType(MediaType.APPLICATION_JSON).content(hostJSON)).andExpect(content().json(expectJSON));
+	}
 
 	@Test
 	public void viewAllTest() throws Exception {
