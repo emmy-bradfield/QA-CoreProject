@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.qa.main.domain.Guest;
+import com.qa.main.exception.GuestNotFoundException;
 import com.qa.main.repo.GuestRepo;
 
 @Service
@@ -44,19 +45,19 @@ public class GuestService {
 	
 	public Guest view(Long id) {
 		Optional<Guest> guestOp = this.repo.findById(id);
-		Guest guest = guestOp.get();
+		Guest guest = guestOp.orElseThrow(GuestNotFoundException::new);
 		return guest;
 	}
 	
 	public Guest viewEmail(String email) {
 		Optional<Guest> guestOp = this.repo.findByEmail(email);
-		Guest guest = guestOp.get();
+		Guest guest = guestOp.orElseThrow(GuestNotFoundException::new);
 		return guest;
 	}
 
 	public Guest update(Long id, Guest newGuest) {
 		Optional<Guest> guestOp = this.repo.findById(id);
-		Guest guest = guestOp.get();
+		Guest guest = guestOp.orElseThrow(GuestNotFoundException::new);
 		guest.setName(newGuest.getName());
 		guest.setEmail(newGuest.getEmail());
 		guest.setPassword(newGuest.getPassword());
@@ -65,7 +66,7 @@ public class GuestService {
 	
 	public Guest respond(Long id, Guest newGuest) {
 		Optional<Guest> guestOp = this.repo.findById(id);
-		Guest guest = guestOp.get();
+		Guest guest = guestOp.orElseThrow(GuestNotFoundException::new);
 		guest.setAttend(newGuest.getAttend());
 		guest.setAccom(newGuest.getAccom());
 		guest.setPark(newGuest.getPark());
@@ -74,7 +75,7 @@ public class GuestService {
 	
 	public Guest activate (Long id) {
 		Optional<Guest> guestOp = this.repo.findById(id);
-		Guest guest = guestOp.get();
+		Guest guest = guestOp.orElseThrow(GuestNotFoundException::new);
 		guest.setActive(true);
 		return this.repo.saveAndFlush(guest);
 	}
