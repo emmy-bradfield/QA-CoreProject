@@ -29,6 +29,7 @@ public class GuestService {
 	}
 	
 	public Guest setup(Guest guest) {
+		guest.setId(1L);
 		guest.setHost(true);
 		guest.setActive(true);
 		guest.setAttend(true);
