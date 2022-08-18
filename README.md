@@ -137,13 +137,16 @@ You may also get a pop up requesting permision to make changes; you can accept t
 
 Once SpringBoot has finished it's startup process, you can navigate to http://localhost:8080 to see your website live:
 
-<img src="./Party_Planner/src/main/resources/static/assets/website.png">
+<img src="./Party_Planner/src/main/resources/static/assets/setup.png">
+
 
 **Note: if you have renamed your landing page and it is not index.html or home.html, instead navigate to:**
 ```
 http://localhost:8080/file-name.html
 ```
 **If you are running your server on localhost, but any port other than 8080, ensure you change the url to also reflect this**
+
+The first time you access the website, as there is no data in the database, you will be presented with the screen above prompting you to create your host account. This account will automatically be set as the host, and once created you'll be redirected to the host page. From thenonout, when loading the website, you will open on the login page and simply need to log in with the details you provided at setup.
 
 ## Built with
 * [Maven](https://maven.apache.org/) - Dependency management
