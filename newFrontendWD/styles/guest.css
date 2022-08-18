@@ -1,0 +1,50 @@
+.no-space{
+width:0;
+height:0;
+margin:0;
+padding:0;
+}
+
+.col-auto{
+    width:100%;
+}
+
+.simple-container {
+    padding: 1em;
+    margin:0;
+}
+
+.button-row {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+}
+
+.card{
+    padding:1em;
+}
+
+.wide-container{
+    width:55%;
+    margin-right:0;
+    margin-left:0;
+}
+
+.slim-container{
+    width:30%;
+    margin-left:0;
+    margin-right:0;
+}
+
+.container{
+    margin-left:0;
+}
+
+.form-control{
+    width:90%;
+}
+
+.smaller{
+    font-size: smaller;
+}
