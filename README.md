@@ -146,7 +146,21 @@ http://localhost:8080/file-name.html
 ```
 **If you are running your server on localhost, but any port other than 8080, ensure you change the url to also reflect this**
 
-The first time you access the website, as there is no data in the database, you will be presented with the screen above prompting you to create your host account. This account will automatically be set as the host, and once created you'll be redirected to the host page. From thenonout, when loading the website, you will open on the login page and simply need to log in with the details you provided at setup.
+The first time you access the website, as there is no data in the database, you will be presented with the screen above prompting you to create your host account. This account will automatically be set as the host, and once created you'll be redirected to the host page.
+
+<img src="./Party_Planner/src/main/resources/static/assets/host.png">
+
+
+From thenonout, when loading the website, you will open on the login page and simply need to log in with the details you provided at setup.
+
+<img src="./Party_Planner/src/main/resources/static/assets/login.png">
+
+
+From here, the invite tab can be used to add more guests, the inspect to call a specific guests' details by their ID, and you can expand any guest in the guestlist to see further details. Additionally, editing the text in the top box will update your party details and feed that through to the guests' login. When logged in themselves, guests can also choose to respond to your invite, as well as updating their personal details and account settings, as shown below:
+
+<img src="./Party_Planner/src/main/resources/static/assets/guest.png">
+
+Naturally, changes made to the front end or features before deployment will result in a different product; the screenshots and guides above are simply for reference and to get an idea of the product's potential.
 
 ## Built with
 * [Maven](https://maven.apache.org/) - Dependency management
